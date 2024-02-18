@@ -32,7 +32,7 @@ truncate -s 0 access.log
 rm access.log.tmp
 
 # Передача файла на другой сервер
-sshpass -p "$password" scp -o StrictHostKeyChecking=no file.txt "$archiveFileName" root@storage.quantech.cc:/home/logs/
+sshpass -p "$password" scp "$archiveFileName" root@storage.quantech.cc:/home/logs/
 
 # Проверяем статус выполнения предыдущей команды
 if [ "$?" -eq 0 ]; then

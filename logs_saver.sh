@@ -31,6 +31,9 @@ truncate -s 0 access.log
 # Удалите временную копию файла
 rm access.log.tmp
 
+# Удалить архив
+rm access.log.gz
+
 # Передача файла на другой сервер
 sshpass -p "$password" scp "$archiveFileName" root@storage.quantech.cc:/home/logs/
 

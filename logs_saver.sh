@@ -1,8 +1,8 @@
 #!/bin/sh
 
 # Проверяем количество переданных аргументов
-if [ "$#" -ne 2 ]; then
-    echo "Использование: $0 serverID password"
+if [ "$#" -lt 2 ]; then
+    echo "Использование: $0 serverID password [currentDate]"
     exit 1
 fi
 
@@ -10,8 +10,13 @@ fi
 serverID=$1
 password=$2
 
-# Получите текущую дату в формате день-месяц-год
-currentDate=$(date -u +"%d-%m-%Y")
+# Проверяем, передан ли третий аргумент (дата)
+if [ -n "$3" ]; then
+    currentDate=$3
+else
+    # Используем текущую дату, если она не передана
+    currentDate=$(date -u +"%d-%m-%Y")
+fi
 
 # Имя файла архива
 archiveFileName="${serverID}.${currentDate}.tar.gz"
@@ -31,8 +36,10 @@ truncate -s 0 access.log
 # Удалите временную копию файла
 rm access.log.tmp
 
-# Удалить архив
-rm access.log.gz
+# Удалить архив, если существует
+if [ -f access.log.gz ]; then
+    rm access.log.gz
+fi
 
 # Передача файла на другой сервер
 sshpass -p "$password" scp "$archiveFileName" root@storage.quantech.cc:/home/logs/

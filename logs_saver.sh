@@ -1,22 +1,15 @@
 #!/bin/sh
 
 # Проверяем количество переданных аргументов
-if [ "$#" -lt 2 ]; then
-    echo "Использование: $0 serverID password [currentDate]"
+if [ "$#" -lt 3 ]; then
+    echo "Использование: $0 serverID password currentDate"
     exit 1
 fi
 
-# Идентификатор сервера и пароль передаются в качестве аргументов
+# Идентификатор сервера, пароль и дата передаются в качестве аргументов
 serverID=$1
 password=$2
-
-# Проверяем, передан ли третий аргумент (дата)
-if [ -n "$3" ]; then
-    currentDate=$3
-else
-    # Используем текущую дату, если она не передана
-    currentDate=$(date -u +"%d-%m-%Y")
-fi
+currentDate=$3
 
 # Имя файла архива
 archiveFileName="${serverID}.${currentDate}.tar.gz"

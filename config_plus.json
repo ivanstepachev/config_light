@@ -96,15 +96,20 @@
             }
         },
         {
-            "port": 10086,
-            "protocol": "vmess",
-            "tag": "vmess",
+            "port": 2083,
+            "protocol": "shadowsocks",
             "settings": {
-                "clients": [
-                {
-                    "id": "b831381d-6324-4d53-ad4f-8cda48b30811"
-                }
-                ]
+                "method": "chacha20-ietf-poly1305",
+                "password": "qu@ntum2023",
+                "network": "tcp,udp",
+                "fast_open": true
+            },
+            "streamSettings": {
+                "network": "tcp",
+                "security": "none"
+            },
+            "sniffing": {
+                "enabled": false
             }
         },
         {

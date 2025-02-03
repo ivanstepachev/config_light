@@ -97,19 +97,14 @@
         },
         {
             "port": 2083,
-            "protocol": "shadowsocks",
-            "tag": "shadowsocks",
+            "protocol": "vmess",
+            "tag": "vmess",
             "settings": {
-                "clients": [],
-                "method": "chacha20-ietf-poly1305",
-                "network": "tcp,udp"
-            },
-            "streamSettings": {
-                "network": "tcp",
-                "security": "none"
-            },
-            "sniffing": {
-                "enabled": false
+                "clients": [
+                {
+                    "id": "b831381d-6324-4d53-ad4f-8cda48b30811"
+                }
+                ]
             }
         },
         {

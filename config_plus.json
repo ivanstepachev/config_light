@@ -99,10 +99,9 @@
             "port": 2083,
             "protocol": "shadowsocks",
             "settings": {
+                "clients": [],
                 "method": "chacha20-ietf-poly1305",
-                "password": "qu@ntum2023",
-                "network": "tcp,udp",
-                "fast_open": true
+                "network": "tcp,udp"
             },
             "streamSettings": {
                 "network": "tcp",

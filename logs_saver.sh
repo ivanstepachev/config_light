@@ -12,7 +12,7 @@ password=$2
 currentDate=$3
 
 # Имя файла архива
-archiveFileName="${serverID}.${currentDate}.tar.gz"
+archiveFileName="${currentDate}-${serverID}.tar.gz"
 
 # Перейдите в директорию с логами
 cd /var/log/Xray || exit

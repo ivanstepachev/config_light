@@ -12,7 +12,7 @@ password=$2
 currentDate=$3
 
 # Имя файла архива
-archiveFileName="${currentDate}-${serverID}.tar.gz"
+archiveFileName="${currentDate}.tar.gz"
 
 # Перейдите в директорию с логами
 cd /var/log/Xray || exit
@@ -35,7 +35,7 @@ if [ -f access.log.gz ]; then
 fi
 
 # Передача файла на другой сервер
-sshpass -p "$password" scp "$archiveFileName" root@storage.quantech.cc:/home/logs/
+sshpass -p "$password" ssh root@storage.quantech.cc "mkdir -p /home/logs/${serverID}" && sshpass -p "$password" scp "$archiveFileName" root@storage.quantech.cc:/home/logs/"${serverID}"
 
 # Проверяем статус выполнения предыдущей команды
 if [ "$?" -eq 0 ]; then

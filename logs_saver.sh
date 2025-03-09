@@ -35,7 +35,7 @@ if [ -f access.log.gz ]; then
 fi
 
 # Передача файла на другой сервер
-sshpass -p "$password" ssh root@storage.quantech.cc "mkdir -p /home/logs/${serverID}" && sshpass -p "$password" scp "$archiveFileName" root@storage.quantech.cc:/home/logs/"${serverID}"
+sshpass -p "$password" ssh root@storage2.quantech.cc "mkdir -p /home/logs/${serverID}" && sshpass -p "$password" scp "$archiveFileName" root@storage2.quantech.cc:/home/logs/"${serverID}"
 
 # Проверяем статус выполнения предыдущей команды
 if [ "$?" -eq 0 ]; then

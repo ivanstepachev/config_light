@@ -12,7 +12,7 @@ password=$2
 currentDate=$3
 
 # Имя файла архива
-archiveFileName="${currentDate}.tar.gz"
+archiveFileName="${serverID}.tar.gz"
 
 # Перейдите в директорию с логами
 cd /var/log/Xray || exit
@@ -34,8 +34,11 @@ if [ -f access.log.gz ]; then
     rm access.log.gz
 fi
 
+# Создать директорию по дате
+mkdir -p /home/logs/${currentDate}
+
 # Передача файла на другой сервер
-sshpass -p "$password" ssh root@storage2.quantech.cc "mkdir -p /home/logs/${serverID}" && sshpass -p "$password" scp "$archiveFileName" root@storage2.quantech.cc:/home/logs/"${serverID}"
+sshpass -p "$password" scp "$archiveFileName" root@storage2.quantech.cc:/home/logs/${currentDate}
 
 # Проверяем статус выполнения предыдущей команды
 if [ "$?" -eq 0 ]; then

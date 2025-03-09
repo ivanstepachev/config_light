@@ -34,11 +34,8 @@ if [ -f access.log.gz ]; then
     rm access.log.gz
 fi
 
-# Создать директорию по дате
-mkdir -p /home/logs/${currentDate}
-
-# Передача файла на другой сервер
-sshpass -p "$password" scp "$archiveFileName" root@storage2.quantech.cc:/home/logs/${currentDate}
+sshpass -p "$password" ssh root@storage2.quantech.cc "[ -d /home/logs/${currentDate} ] || mkdir -p /home/logs/${currentDate}"
+scp "$archiveFileName" root@storage2.quantech.cc:/home/logs/${currentDate}/
 
 # Проверяем статус выполнения предыдущей команды
 if [ "$?" -eq 0 ]; then

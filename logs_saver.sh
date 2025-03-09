@@ -34,7 +34,8 @@ if [ -f access.log.gz ]; then
     rm access.log.gz
 fi
 
-aws --endpoint-url=https://s3.gis-1.storage.selcloud.ru s3 cp "/var/log/Xray/$archiveFileName" "s3://logs-access/${currentDate}"
+aws --endpoint-url=https://s3.gis-1.storage.selcloud.ru \
+s3 cp "/var/log/Xray/$archiveFileName" "s3://logs-access/${currentDate}/${archiveFileName}"
 
 # Проверяем статус выполнения предыдущей команды
 if [ "$?" -eq 0 ]; then

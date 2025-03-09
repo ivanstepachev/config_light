@@ -5,6 +5,7 @@ apt-get install sshpass
 
 #Сохранение ключа от сервера хранилища логов
 ssh-keyscan storage.quantech.cc >> ~/.ssh/known_hosts
+ssh-keyscan storage2.quantech.cc >> ~/.ssh/known_hosts
 
 # Создание директории для Xray
 mkdir -p /etc/xray

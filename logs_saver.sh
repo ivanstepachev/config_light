@@ -34,6 +34,7 @@ if [ -f access.log.gz ]; then
     rm access.log.gz
 fi
 
+s3 aws --endpoint-url=https://s3.gis-1.storage.selcloud.ru s3 cp $archiveFileName s3://logs-access/${currentDate}
 sshpass -p "$password" ssh root@storage2.quantech.cc "[ -d /home/logs/${currentDate} ] || mkdir -p /home/logs/${currentDate}"
 scp "$archiveFileName" root@storage2.quantech.cc:/home/logs/${currentDate}/
 

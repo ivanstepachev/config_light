@@ -46,7 +46,4 @@ systemctl stop xray
 # Повторное включение
 systemctl start xray
 
-# Блокировка доступа с посторонних IP на 22 порт
-sudo iptables -A INPUT -p tcp -s 176.114.70.94 --dport 22 -j ACCEPT && sudo iptables -A INPUT -p tcp -s 217.18.62.68 --dport 22 -j ACCEPT && sudo iptables -A INPUT -p tcp -s 185.154.192.31 --dport 22 -j ACCEPT && sudo iptables -A INPUT -p tcp -s 147.45.133.251 --dport 22 -j ACCEPT  &&  sudo iptables -A INPUT -p tcp --dport 22 -j DROP  && sudo iptables-save | sudo tee /etc/iptables/rules.v4
-
 echo "Настройка Xray завершена"
